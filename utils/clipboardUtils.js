@@ -11,11 +11,9 @@ function setupClipboardListener(downloadButton) {
               .sendMessage({ action: "fetchTweet", tweetId })
               .then((response) => {
                 if (response.success && response.videoUrl) {
-                  downloadVideo(tweetId, response.videoUrl);
-                  showNotification("Successfully downloaded video", 3000, true);
+                  downloadVideo(response.tweetOwner, tweetId, response.videoUrl);
                   markAsDownloaded(downloadButton);
                 } else {
-                  showNotification("Failed to download video", 3000, false);
                   console.error("No video URL found:", response.error);
                 }
               });

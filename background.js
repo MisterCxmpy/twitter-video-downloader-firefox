@@ -7,7 +7,11 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
       .then((response) => response.json())
       .then((data) => {
         const videoUrl = extractVideoUrl(data.data);
-        sendResponse({ success: true, videoUrl });
+        sendResponse({
+          success: true,
+          videoUrl,
+          tweetOwner: data.data.user.screen_name,
+        });
       })
       .catch((error) => sendResponse({ success: false, error }));
 

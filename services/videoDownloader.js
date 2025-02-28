@@ -1,4 +1,4 @@
-async function downloadVideo(tweetId, url) {
+async function downloadVideo(tweetOwner, tweetId, url) {
   try {
     const response = await fetch(url);
     const blob = await response.blob();
@@ -6,12 +6,13 @@ async function downloadVideo(tweetId, url) {
 
     const a = document.createElement("a");
     a.href = blobUrl;
-    a.download = `${tweetId}.mp4`;
+    a.download = `${tweetOwner}-${tweetId}.mp4`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 
     URL.revokeObjectURL(blobUrl);
+    showNotification("Successfully downloaded video", 3000, true);
   } catch (error) {
     console.error("Error downloading the video:", error);
     showNotification("Failed to download the video", 3000, false);
