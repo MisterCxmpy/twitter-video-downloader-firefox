@@ -23,7 +23,7 @@
 1. Download the repo:  
    ```sh
    git clone https://github.com/MisterCxmpy/twitter-video-downloader-firefox.git
-   cd twitter-video-downloader
+   cd twitter-video-downloader-firefox
    ```  
 2. Open **Firefox** and go to `about:debugging`  
 3. Click **"This Firefox"** → **"Load Temporary Add-on"**  
